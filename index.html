@@ -32,6 +32,7 @@
             очень скоро обретут долгожданное счастье! 2021 год затронет своими
             потрясениями каждого из нас.
           </p>
+          <div class="main__progressbar"></div>
           <div class="main__carousel carousel">
             <article class="carousel__item">
               <div class="carousel__top">
@@ -48,8 +49,7 @@
                 </div>
               </div>
             </article>
-            <!--
-            <article class="carousel__item">
+            <article class="carousel__item hidden">
               <div class="carousel__top">
                 <h3 class="carousel__question">
                   В какое время суток Вы чувствуете себя наиболее комфортно?
@@ -74,10 +74,73 @@
                 </div>
               </div>
             </article>
-            -->
-            <div class="carousel__next">
-                <button class="carousel__btn">Далее</button>
-            </div>
+            <article class="carousel__item hidden">
+              <div class="carousel__top">
+                <h3 class="carousel__question">Подскажите, мучает ли Вас бессонница последнее время?</h3>
+              </div>
+              <div class="carousel__body carousel__body-column">
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="yes" name="insomnia" value="yes" />
+                  <label class="carousel__label" for="yes">Да</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="no" name="insomnia" value="no" />
+                  <label class="carousel__label" for="no">Нет</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="sometimes" name="insomnia" value="sometimes" />
+                  <label class="carousel__label" for="sometimes">Иногда</label>
+                </div>
+              </div>
+            </article>
+            <article class="carousel__item hidden">
+              <div class="carousel__top">
+                <h3 class="carousel__question">Чувствуете ли Вы в последнее время, что вам никак не удается осуществить ваши планы?
+                </h3>
+              </div>
+              <div class="carousel__body carousel__body-column">
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="yes-second" name="plans" value="yes" />
+                  <label class="carousel__label" for="yes-second">Да</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="no-second" name="plans" value="no" />
+                  <label class="carousel__label" for="no-second">Нет</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="sometimes-second" name="plans" value="sometimes" />
+                  <label class="carousel__label" for="sometimes-second">Иногда</label>
+                </div>
+              </div>
+            </article>
+            <article class="carousel__item hidden">
+              <div class="carousel__top">
+                <h3 class="carousel__question">
+                  Какой Вы видите свою жизнь через 5 лет?
+                </h3>
+              </div>
+              <div class="carousel__body carousel__body-column">
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="family" name="future u" value="family" />
+                  <label class="carousel__label" for="family">Брак, семья, дети, дом</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="travel" name="future u" value="travel" />
+                  <label class="carousel__label" for="travel">Путешествия по Миру</label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="career" name="future u" value="career" />
+                  <label class="carousel__label" for="career">Успешная карьера </label>
+                </div>
+                <div class="carousel__checkbox">
+                  <input class="carousel__input" type="radio" id="All" name="future u" value="All" />
+                  <label class="carousel__label" for="All">Всё вместе</label>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="carousel__next">
+            <button class="carousel__btn">Далее</button>
           </div>
         </div>
       </main>
@@ -87,5 +150,6 @@
         </div>
       </footer>
     </div>
+    <script src="js/index.js"></script>
   </body>
 </html>

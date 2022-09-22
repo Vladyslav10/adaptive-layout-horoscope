@@ -34,6 +34,9 @@
         padding: 0px 0px 55.52% 0px;
         margin: 0px 0px 32px 0px;
         background: url(../img/main/background.png) 0 0/contain no-repeat;
+        &.disabled {
+            display: none;
+        }
         & > img {
             position: absolute;
             width: 50%;
@@ -67,22 +70,46 @@
         font-weight: 500;
         line-height: 110%;
         margin: 0px 0px 21px 0px;
+        &.disabled {
+            display: none;
+        }
     }
 
     &__text {
         font-size: 16px;
         line-height: 144%;
         margin: 0px 0px 42px 0px;
+        &.disabled {
+            display: none;
+        }
     }
-
-    
+    &__progressbar {
+        display: none;
+        &.active {
+            display: block;
+            min-height: 4px;
+            margin: 0px 0px 32px 0px;
+        }
+    }
 }
 
 .carousel {
     margin: 0px 0px 137px 0px;
+    display: flex;
+    position: relative;
+    min-height: 209px;
     &__item {
-        max-width: 623px;
-        margin: 0px 0px 13px 0px;
+        min-width: 100%;
+        position: absolute;
+        bottom: 0px;
+        right: 0;
+        transition: all 0.7s ease 0s;
+        &.hidden {
+            right: -2000px;
+        }
+        &.used {
+            bottom: -2000px;
+        }
     }
 
     &__top {
@@ -164,10 +191,16 @@
     &__next {
         width: 186px;
         margin: 0 auto;
+        display: none;
+        opacity: 0;
+        transform: opacity 0.5s ease 0.4s;
+        &.active {
+            display: block;
+            opacity: 1;
+        }
     }
 
     &__btn {
-        display: none;
         width: 100%;        
         padding: 10px 73px;
         background-color: #315DFA;
@@ -202,6 +235,11 @@
         &__body {
             & > div:not(:last-child) {
                 margin: 0px 115px 0px 0px;
+            }
+        }
+        &__body-column {
+            & > div:not(:last-child) {
+                margin: 0px 0px 28px 0px;
             }
         }
     }
@@ -253,8 +291,11 @@
     }
     
     .carousel {
-        margin: 0px 0px 197px 0px;
-
+        margin: 0px 0px 106px 0px;
+        min-height: 119px;
+        &.active {
+            min-height: 287px;
+        }
         &__top {
             text-align: center;
             padding: 17px 40px 12px 40px;
