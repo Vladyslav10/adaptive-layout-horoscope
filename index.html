@@ -32,7 +32,7 @@
             очень скоро обретут долгожданное счастье! 2021 год затронет своими
             потрясениями каждого из нас.
           </p>
-          <div class="main__progressbar"></div>
+          <div class="main__progressbar" id="progressbar"></div>
           <div class="main__carousel carousel">
             <article class="carousel__item">
               <div class="carousel__top">
@@ -121,21 +121,103 @@
               </div>
               <div class="carousel__body carousel__body-column">
                 <div class="carousel__checkbox">
-                  <input class="carousel__input" type="radio" id="family" name="future u" value="family" />
+                  <input class="carousel__input" type="radio" id="family" name="future" value="family" />
                   <label class="carousel__label" for="family">Брак, семья, дети, дом</label>
                 </div>
                 <div class="carousel__checkbox">
-                  <input class="carousel__input" type="radio" id="travel" name="future u" value="travel" />
+                  <input class="carousel__input" type="radio" id="travel" name="future" value="travel" />
                   <label class="carousel__label" for="travel">Путешествия по Миру</label>
                 </div>
                 <div class="carousel__checkbox">
-                  <input class="carousel__input" type="radio" id="career" name="future u" value="career" />
+                  <input class="carousel__input" type="radio" id="career" name="future" value="career" />
                   <label class="carousel__label" for="career">Успешная карьера </label>
                 </div>
                 <div class="carousel__checkbox">
-                  <input class="carousel__input" type="radio" id="All" name="future u" value="All" />
+                  <input class="carousel__input" type="radio" id="All" name="future" value="All" />
                   <label class="carousel__label" for="All">Всё вместе</label>
                 </div>
+              </div>
+            </article>
+            <article class="carousel__item hidden">
+              <div class="carousel__top">
+                <h3 class="carousel__question">
+                  Введите дату своего рождения:
+                </h3>
+              </div>
+              <div class="carousel__body carousel__body-column">
+                <div class="carousel__select">
+                  <select class="carousel__select-area" name="day" id="select-day">
+                    <option selected value="День">день</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                </div>
+                <div class="carousel__select">
+                  <select class="carousel__select-area" name="month" id="select-monts">
+                    <option selected value="Місяць">Місяць</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                  </select>
+                </div>
+                <div class="carousel__select">
+                  <select class="carousel__select-area" name="year" id="select-year">
+                    <option selected value="Рік">Рік</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                    <option value="2014">2014</option>
+                    <option value="2013">2013</option>
+                    <option value="2012">2012</option>
+                    <option value="2011">2011</option>
+                    <option value="2010">2010</option>
+                  </select>
+                </div>
+                <p class="carousel__message"></p>
+                <div class="carousel__zodiac"></div>
               </div>
             </article>
           </div>
@@ -150,6 +232,7 @@
         </div>
       </footer>
     </div>
+    <script src="https://cdn.rawgit.com/kimmobrunfeldt/progressbar.js/0.5.6/dist/progressbar.js"></script>
     <script src="js/index.js"></script>
   </body>
 </html>
