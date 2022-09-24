@@ -1,5 +1,6 @@
 (function(){
     let currentSlide = 1;
+    const mainArea = document.querySelector('.main__container');
     const title = document.querySelector('.main__title');
     const text = document.querySelector('.main__text');
     const prog = document.querySelector('.main__progressbar');
@@ -15,16 +16,9 @@
     const slides = document.querySelectorAll('.carousel__item');
     const button = document.querySelector('.carousel__next');
     const slidesAmount = slides.length;
-    console.log(slidesAmount);
-    let line = new ProgressBar.Line('#progressbar', {
-        color: '#B53E42',
-        trailWidth: 8,
-        trailColor: '#F3F4F8',
-        duration: 1000,
-        easing: 'linear'
-    });
-    
-
+    let line;
+    let secondLine;
+ 
     button.addEventListener('click', chandeSlide);
 
     checked.forEach(el => {
@@ -53,33 +47,47 @@
         if(currentSlide === 1) {
             disableAreasAndAddProbressbar();
         }
-        if(currentSlide < slidesAmount - 1) {
-            setTimeout(()=> {
-                const h = slides[currentSlide - 1].offsetHeight;
-                carouselArea.style.minHeight = h+'px';
-            }, 300) 
-        } else {
+
+        const prevSlide = currentSlide;
+
+        if(currentSlide < slidesAmount) {
+            line.animate((1/slidesAmount) * (currentSlide + 1));
+        }
+
+        if(currentSlide < slidesAmount) {
+            currentSlide++;    
+            console.log(currentSlide);
+            slides[prevSlide - 1].classList.add('used');
+            slides[currentSlide - 1].classList.remove('hidden');
+            setTimeout(()=> { 
+                carouselArea.style.minHeight ='0px';
+                carouselArea.style.minHeight = slides[currentSlide - 1].clientHeight+'px';
+            }, 300);
+            button.classList.remove('active');
+        } else if (currentSlide === slidesAmount - 1){
             const w = window.innerWidth;
             if(w < 769){
                 setTimeout(()=> {
-                    const h = slides[currentSlide - 1].offsetHeight + 110;
-                    carouselArea.style.minHeight = h+'px';
+                    carouselArea.style.minHeight ='0px';
+                    const h = slides[currentSlide - 1].clientHeight + 110;
+                    console.log(h);
+                    carouselArea.style.minHeight = 'px';
                 }, 300) 
-            }else {
+            } else {
                 setTimeout(()=> {
-                    const h = slides[currentSlide - 1].offsetHeight + 132;
-                    carouselArea.style.minHeight = h+'px';
+                    carouselArea.style.minHeight ='0px';
+                    const h = slides[currentSlide - 1].clientHeight + 132;
+                    console.log(h);
+                    carouselArea.style.minHeight = 'px';
                 }, 300) 
             }
-            
+        } else if (currentSlide === slidesAmount) {
+            slides[prevSlide - 1].classList.add('used');
+            button.classList.remove('active');
+            prog.classList.remove('active');
+            line = '';
+            adder();
         }
-
-        line.animate((1/slidesAmount) * (currentSlide + 1));
-        const prevSlide = currentSlide;
-        currentSlide++;
-        slides[prevSlide - 1].classList.add('used');
-        slides[currentSlide - 1].classList.remove('hidden');
-        button.classList.remove('active');
     }
 
     function disableAreasAndAddProbressbar() {
@@ -87,6 +95,13 @@
         title.classList.add('disabled');
         backgruond.classList.add('disabled');
         prog.classList.add('active');
+        line = new ProgressBar.Line('#progressbar', {
+            color: '#B53E42',
+            trailWidth: 8,
+            trailColor: '#F3F4F8',
+            duration: 1000,
+            easing: 'linear'
+        });
     };
 
     function addZodiacImage(day, month) {
@@ -164,5 +179,53 @@
                     zodiac.innerHTML = `<img src="img/zodiac/10_Capricorn.png" alt="Capricorn.png">`;
                 break;
         }
+    }
+
+    function adder() {
+        mainArea.innerHTML =`
+            <h2 class="main__processing">Обработка Ваших данных:</h2>
+            <div class="main__processbar" id="processbar"></div>
+            <div class="main__information">
+                <p class="main__load">Анализ введенных данных . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Коррекция астрологического знака . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Расчет вариаций ответов . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Генерация предсказания . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Сохранение результата . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Поиск свободного оператора . . . . . . . <span>Выполнено!</span></p>
+                <p class="main__load">Начала озвучки и записи аудио-сообщения . . . . . . . <span class="red">Идёт запись!</span></p>
+                <p class="main__finish"></p>
+            </div>
+        `
+        secondLine = new ProgressBar.Line('#processbar', {
+            color: '#419330',
+            strokeWidth: 7,
+            trailWidth: 7,
+            trailColor: '#F3F4F8',
+            duration: 10000,
+            easing: 'linear',
+            text: {
+                value: '0',
+                style: {
+                    color: '#FFFFFF',
+                    position: 'absolute',
+                    top: '14.8px',
+                    left: '20px',
+                    fontSize: '14px',
+                    padding: 0,
+                    margin: 0,
+                    transform: null
+                },
+            }, step: function(state, bar) {
+                bar.setText((Math.round(bar.value() * 100) + ' %'));
+            }
+        });
+        secondLine.animate(1)
+        setTimeout(()=> {
+            document.querySelector('.main__finish').innerHTML = 'Готово!';
+        }, 10100)
+        setTimeout(()=> {
+            secondLine = '';
+            mainArea.innerHTML = `All done`
+        }, 11500)
     }
 })();
