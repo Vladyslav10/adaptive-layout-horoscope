@@ -33,6 +33,15 @@
   margin: 0px 0px 26px 0px;
 }
 
+.main__processbar > .main__progress-text {
+  position: absolute;
+  top: 14.8px;
+  left: 20px;
+  font-size: 12px;
+  padding: 0;
+  margin: 0;
+}
+
 .main__information {
   padding: 0px 0px 25px 0px;
 }
@@ -359,6 +368,66 @@
   background-color: #355ADF;
 }
 
+.horoscope__thanks {
+  font-weight: 500;
+  line-height: 136%;
+  margin: 0px 0px 19px 0px;
+}
+
+.horoscope__congratulation {
+  font-weight: 500;
+  line-height: 150%;
+  color: #315DFA;
+  margin: 0px 0px 19px 0px;
+}
+
+.horoscope__title {
+  font-weight: 500;
+  color: #343B4D;
+  line-height: 105%;
+  font-size: 18px;
+}
+
+.horoscope__info {
+  line-height: 150%;
+  color: #343B4D;
+  margin: 0px 0px 25px 0px;
+}
+
+.horoscope__btn {
+  max-width: 288px;
+  margin: 0 auto;
+}
+
+.horoscope__btn > button {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-weight: 800;
+  line-height: 157%;
+  padding: 10px 18px;
+  min-height: 45px;
+  background-color: #315DFA;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.horoscope__btn > button::after {
+  content: url("../img/main/phone.png");
+  position: absolute;
+  top: 9px;
+  left: 18px;
+  width: 28px;
+  height: 26px;
+}
+
 .footer {
   padding: 20px 0px;
 }
@@ -368,6 +437,13 @@
   text-align: center;
   font-size: 12px;
   color: #D6D6D6;
+}
+
+.footer__copyrigth.last {
+  text-transform: uppercase;
+  font-size: 6px;
+  letter-spacing: 2px;
+  line-height: 116%;
 }
 
 @media (max-width: 768px) {
@@ -382,6 +458,9 @@
   }
   .carousel__select {
     width: 45%;
+  }
+  .main__processbar > .main__progress-text {
+    top: 16px;
   }
 }
 
@@ -402,6 +481,9 @@
   }
   .main {
     padding: 0px 6px 0px 6px;
+  }
+  .main__processbar > .main__progress-text {
+    top: 9px;
   }
   .main__background {
     margin: 0px 0px 18px 0px;
@@ -450,7 +532,7 @@
     margin: 0 auto 28px auto;
   }
   .carousel__select {
-    width: 45%;
+    width: 55%;
   }
   .carousel__input {
     width: 15px;
@@ -481,5 +563,8 @@
   }
   .carousel__body > div.carousel__select {
     margin: 0 auto 28px auto;
+  }
+  .main__processbar > .main__progress-text {
+    top: 6px;
   }
 }

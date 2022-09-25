@@ -15,6 +15,7 @@
     const checked = document.querySelectorAll('.carousel__input');
     const slides = document.querySelectorAll('.carousel__item');
     const button = document.querySelector('.carousel__next');
+    const footer = document.querySelector('.footer__copyrigth');
     const slidesAmount = slides.length;
     let line;
     let secondLine;
@@ -54,9 +55,8 @@
             line.animate((1/slidesAmount) * (currentSlide + 1));
         }
 
-        if(currentSlide < slidesAmount) {
+        if(currentSlide < slidesAmount - 1) {
             currentSlide++;    
-            console.log(currentSlide);
             slides[prevSlide - 1].classList.add('used');
             slides[currentSlide - 1].classList.remove('hidden');
             setTimeout(()=> { 
@@ -65,28 +65,30 @@
             }, 300);
             button.classList.remove('active');
         } else if (currentSlide === slidesAmount - 1){
+            currentSlide++;    
+            slides[prevSlide - 1].classList.add('used');
+            slides[currentSlide - 1].classList.remove('hidden');
             const w = window.innerWidth;
             if(w < 769){
                 setTimeout(()=> {
                     carouselArea.style.minHeight ='0px';
-                    const h = slides[currentSlide - 1].clientHeight + 110;
-                    console.log(h);
-                    carouselArea.style.minHeight = 'px';
+                    //const h = ;
+                    carouselArea.style.minHeight = slides[currentSlide - 1].clientHeight + 110+'px';
                 }, 300) 
             } else {
                 setTimeout(()=> {
                     carouselArea.style.minHeight ='0px';
-                    const h = slides[currentSlide - 1].clientHeight + 132;
-                    console.log(h);
-                    carouselArea.style.minHeight = 'px';
+                    //const h = ;
+                    carouselArea.style.minHeight = slides[currentSlide - 1].clientHeight + 132+'px';
                 }, 300) 
             }
+            button.classList.remove('active');
         } else if (currentSlide === slidesAmount) {
             slides[prevSlide - 1].classList.add('used');
             button.classList.remove('active');
             prog.classList.remove('active');
             line = '';
-            adder();
+            loadingPage();
         }
     }
 
@@ -181,7 +183,7 @@
         }
     }
 
-    function adder() {
+    function loadingPage() {
         mainArea.innerHTML =`
             <h2 class="main__processing">Обработка Ваших данных:</h2>
             <div class="main__processbar" id="processbar"></div>
@@ -198,21 +200,16 @@
         `
         secondLine = new ProgressBar.Line('#processbar', {
             color: '#419330',
-            strokeWidth: 7,
-            trailWidth: 7,
+            strokeWidth: 8,
+            trailWidth: 8,
             trailColor: '#F3F4F8',
             duration: 10000,
             easing: 'linear',
             text: {
                 value: '0',
+                className: 'main__progress-text',
                 style: {
                     color: '#FFFFFF',
-                    position: 'absolute',
-                    top: '14.8px',
-                    left: '20px',
-                    fontSize: '14px',
-                    padding: 0,
-                    margin: 0,
                     transform: null
                 },
             }, step: function(state, bar) {
@@ -225,7 +222,35 @@
         }, 10100)
         setTimeout(()=> {
             secondLine = '';
-            mainArea.innerHTML = `All done`
+            showResult();
         }, 11500)
     }
+
+    function showResult() {
+        mainArea.innerHTML = `
+        <div class="main__horoscope horoscope">
+            <h3 class="horoscope__thanks">Спасибо за Ваши ответы!</h3>
+            <p class="horoscope__congratulation">
+            Поздравляем! Прослушать свой персональный гороскоп возможно уже
+            сейчас!
+            </p>
+            <h2 class="horoscope__title">2021 год Вас ошарашит!</h2>
+            <p class="horoscope__info">
+            Вас ждёт то, чего Вы никак не ожидали. Первые известия Вы получите
+            совсем скоро, возможно это 17-18 ноября!
+            </p>
+            <p class="horoscope__info">
+            Что бы прослушать аудио-сообщение, необходимо нажать на кнопку ниже
+            и позвонить со своего мобильного телефона. Позвоните и Прослушайте
+            очень серьезную информацию!
+            </p>
+            <div class="horoscope__btn">
+            <button type="button">Звонить и слушать</button>
+            </div>
+        </div>
+        `;
+        footer.classList.add('last');
+        footer.innerText = 'TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT. PRIN FOLOSIREA LUI DECLARATI CA AVETI 18';
+    }
 })();
+//

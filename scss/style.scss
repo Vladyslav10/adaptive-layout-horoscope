@@ -35,6 +35,14 @@
     &__processbar {
         position: relative;
         margin: 0px 0px 26px 0px;
+        & > .main__progress-text {
+            position: absolute;
+            top: 14.8px;
+            left: 20px;
+            font-size: 12px;
+            padding: 0;
+            margin: 0;
+        }
     }
 
     &__information {
@@ -288,6 +296,60 @@
     }
 }
 
+.horoscope {
+
+    &__thanks {
+        font-weight: 500;
+        line-height: 136%;
+        margin: 0px 0px 19px 0px;
+    }
+
+    &__congratulation {
+        font-weight: 500;
+        line-height: 150%;
+        color: #315DFA;
+        margin: 0px 0px 19px 0px;
+    }
+
+    &__title {
+        font-weight: 500;
+        color: #343B4D;
+        line-height: 105%;
+        font-size: 18px;
+    }
+
+    &__info {
+        line-height: 150%;
+        color: #343B4D;
+        margin: 0px 0px 25px 0px;
+    }
+
+    &__btn {
+        max-width: 288px;
+        margin: 0 auto;
+        & > button {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 800;
+            line-height: 157%;
+            padding: 10px 18px;
+            min-height: 45px;
+            background-color: #315DFA;
+            color: #FFFFFF;
+            position: relative;
+            &::after{
+                content:url('../img/main/phone.png');
+                position: absolute;
+                top: 9px;
+                left: 18px;
+                width: 28px;
+                height: 26px;
+            }
+        }
+    }
+}
 
 /////////////////FOOTER/////////////////////////////////////////////////////////
 
@@ -299,6 +361,12 @@
         text-align: center;
         font-size: 12px;
         color: #D6D6D6;
+        &.last {
+            text-transform: uppercase;
+            font-size: 6px;
+            letter-spacing: 2px;
+            line-height: 116%;
+        }
     }
 }
 
@@ -321,6 +389,14 @@
         }
         &__select {
             width: 45%;
+        }
+    }
+
+    .main {
+        &__processbar {
+            & > .main__progress-text {
+                top: 16px;
+            }
         }
     }
       
@@ -349,6 +425,12 @@
 
     .main {
         padding: 0px 6px 0px 6px;
+
+        &__processbar {
+            & > .main__progress-text {
+                top: 9px;
+            }
+        }
         &__background {
             margin: 0px 0px 18px 0px;
             & > img {
@@ -404,7 +486,7 @@
         }
 
         &__select {
-            width: 45%;
+            width: 55%;
         }
 
         &__input {
@@ -442,5 +524,13 @@
                 margin: 0 auto 28px auto;
             }
         }
-    }     
+    }  
+    
+    .main {
+        &__processbar {
+            & > .main__progress-text {
+                top: 6px;
+            }
+        }
+    }
 }
