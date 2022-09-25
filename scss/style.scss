@@ -37,7 +37,8 @@
         margin: 0px 0px 26px 0px;
         & > .main__progress-text {
             position: absolute;
-            top: 14.8px;
+            top: 50%;
+            transform: translateY(-50%);
             left: 20px;
             font-size: 12px;
             padding: 0;
@@ -326,7 +327,7 @@
 
     &__btn {
         max-width: 288px;
-        margin: 0 auto;
+        margin: 0 auto 30px auto;
         & > button {
             width: 100%;
             display: flex;
@@ -351,6 +352,26 @@
     }
 }
 
+.curator {
+    & > p {
+        font-weight: 500;
+        font-size: 18px;
+    }
+
+    & > p:not(:last-child) {
+        margin: 0px 0px 20px 0px;
+    }
+    &__number {
+        & > a {
+            cursor: pointer;
+            color: black;
+        }
+        & > a:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
 /////////////////FOOTER/////////////////////////////////////////////////////////
 
 .footer {
@@ -362,6 +383,8 @@
         font-size: 12px;
         color: #D6D6D6;
         &.last {
+            margin: 0 auto;
+            max-width: 288px;
             text-transform: uppercase;
             font-size: 6px;
             letter-spacing: 2px;
@@ -391,15 +414,6 @@
             width: 45%;
         }
     }
-
-    .main {
-        &__processbar {
-            & > .main__progress-text {
-                top: 16px;
-            }
-        }
-    }
-      
 }
 
 @media (max-width: 480px){
@@ -426,11 +440,6 @@
     .main {
         padding: 0px 6px 0px 6px;
 
-        &__processbar {
-            & > .main__progress-text {
-                top: 9px;
-            }
-        }
         &__background {
             margin: 0px 0px 18px 0px;
             & > img {
@@ -524,13 +533,5 @@
                 margin: 0 auto 28px auto;
             }
         }
-    }  
-    
-    .main {
-        &__processbar {
-            & > .main__progress-text {
-                top: 6px;
-            }
-        }
-    }
+    }     
 }

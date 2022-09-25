@@ -35,7 +35,9 @@
 
 .main__processbar > .main__progress-text {
   position: absolute;
-  top: 14.8px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
   left: 20px;
   font-size: 12px;
   padding: 0;
@@ -396,7 +398,7 @@
 
 .horoscope__btn {
   max-width: 288px;
-  margin: 0 auto;
+  margin: 0 auto 30px auto;
 }
 
 .horoscope__btn > button {
@@ -428,6 +430,24 @@
   height: 26px;
 }
 
+.curator > p {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.curator > p:not(:last-child) {
+  margin: 0px 0px 20px 0px;
+}
+
+.curator__number > a {
+  cursor: pointer;
+  color: black;
+}
+
+.curator__number > a:hover {
+  text-decoration: underline;
+}
+
 .footer {
   padding: 20px 0px;
 }
@@ -440,6 +460,8 @@
 }
 
 .footer__copyrigth.last {
+  margin: 0 auto;
+  max-width: 288px;
   text-transform: uppercase;
   font-size: 6px;
   letter-spacing: 2px;
@@ -458,9 +480,6 @@
   }
   .carousel__select {
     width: 45%;
-  }
-  .main__processbar > .main__progress-text {
-    top: 16px;
   }
 }
 
@@ -481,9 +500,6 @@
   }
   .main {
     padding: 0px 6px 0px 6px;
-  }
-  .main__processbar > .main__progress-text {
-    top: 9px;
   }
   .main__background {
     margin: 0px 0px 18px 0px;
@@ -563,8 +579,5 @@
   }
   .carousel__body > div.carousel__select {
     margin: 0 auto 28px auto;
-  }
-  .main__processbar > .main__progress-text {
-    top: 6px;
   }
 }

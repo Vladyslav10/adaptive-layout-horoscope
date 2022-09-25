@@ -200,8 +200,8 @@
         `
         secondLine = new ProgressBar.Line('#processbar', {
             color: '#419330',
-            strokeWidth: 8,
-            trailWidth: 8,
+            strokeWidth: 7,
+            trailWidth: 7,
             trailColor: '#F3F4F8',
             duration: 10000,
             easing: 'linear',
@@ -210,7 +210,6 @@
                 className: 'main__progress-text',
                 style: {
                     color: '#FFFFFF',
-                    transform: null
                 },
             }, step: function(state, bar) {
                 bar.setText((Math.round(bar.value() * 100) + ' %'));
@@ -231,26 +230,38 @@
         <div class="main__horoscope horoscope">
             <h3 class="horoscope__thanks">Спасибо за Ваши ответы!</h3>
             <p class="horoscope__congratulation">
-            Поздравляем! Прослушать свой персональный гороскоп возможно уже
-            сейчас!
+                Поздравляем! Прослушать свой персональный гороскоп возможно уже
+                сейчас!
             </p>
             <h2 class="horoscope__title">2021 год Вас ошарашит!</h2>
             <p class="horoscope__info">
-            Вас ждёт то, чего Вы никак не ожидали. Первые известия Вы получите
-            совсем скоро, возможно это 17-18 ноября!
+                Вас ждёт то, чего Вы никак не ожидали. Первые известия Вы получите
+                совсем скоро, возможно это 17-18 ноября!
             </p>
             <p class="horoscope__info">
-            Что бы прослушать аудио-сообщение, необходимо нажать на кнопку ниже
-            и позвонить со своего мобильного телефона. Позвоните и Прослушайте
-            очень серьезную информацию!
+                Что бы прослушать аудио-сообщение, необходимо нажать на кнопку ниже
+                и позвонить со своего мобильного телефона. Позвоните и Прослушайте
+                очень серьезную информацию!
             </p>
             <div class="horoscope__btn">
-            <button type="button">Звонить и слушать</button>
+                <button type="button">Звонить и слушать</button>
             </div>
+            <div class='horoscope__curator curator'></div>
         </div>
         `;
+        document.querySelector('.horoscope__btn').addEventListener('click', request);
         footer.classList.add('last');
         footer.innerText = 'TERMENI SI CONDITII: ACESTA ESTE UN SERVICIU DE DIVERTISMENT. PRIN FOLOSIREA LUI DECLARATI CA AVETI 18';
+    }
+
+     async function request() {
+        const response = await fetch('https://swapi.dev/api/people/1/');
+        const result = await response.json();
+        document.querySelector('.horoscope__curator').innerHTML =`
+            <p class='curator__name'>Ім'я: ${result.name}</p>
+            <p class='curator__gender'>Стать: ${result.gender}</p>
+            <p class='curator__number'>Номер: <a href="tel:${result.edited.substr(result.edited.length - 7)}">+${result.edited.substr(result.edited.length - 7)}</a></p>
+        `
     }
 })();
 //
